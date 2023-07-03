@@ -1,0 +1,4 @@
+INSERT INTO Combustible (gastoCombustible, idHogar,idCCombustible) VALUES (1, '07015000270403102102',6);
+INSERT INTO Combustible (gastoCombustible, idHogar,idCCombustible) VALUES (2, '07015000290203105102',6);
+INSERT INTO Combustible (gastoCombustible, idHogar,idCCombustible) VALUES (3, '07015000660402707103',6);
+INSERT INTO Combustible (gastoCombustible, idHogar,idCCombustible) VALUES (80, '09015041550404206103',6);
