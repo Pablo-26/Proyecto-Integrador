@@ -1,0 +1,473 @@
+create table Ciudad
+(
+    idCiudad int          not null,
+    nombre   varchar(250) null,
+    primary key (idCiudad)
+);
+
+create table Estratos
+(
+    idEstratos int not null,
+    primary key (idEstratos)
+);
+
+create table MaterialPared
+(
+    idMaterialPared int          not null,
+    descripcion     varchar(250) null,
+    primary key (idMaterialPared)
+);
+
+create table MaterialPiso
+(
+    idMaterialPiso int          not null,
+    descripcion    varchar(250) null,
+    primary key (idMaterialPiso)
+);
+
+create table MaterialTecho
+(
+    idMaterialTecho int          not null,
+    descripcion     varchar(250) null,
+    primary key (idMaterialTecho)
+);
+
+create table Provincia
+(
+    idProvincia int          not null,
+    nombre      varchar(250) null,
+    primary key (idProvincia)
+);
+
+create table Locacion
+(
+    idLocacion   int auto_increment
+        primary key,
+    idCiudad     int          null,
+    idProvincia  int          null,
+    area         varchar(5)   null,
+    conglomerado varchar(250) null,
+    constraint locacion_ibfk_1
+        foreign key (idCiudad) references Ciudad (idCiudad),
+    constraint locacion_ibfk_2
+        foreign key (idProvincia) references Provincia (idProvincia)
+);
+
+create index idCiudad
+    on Locacion (idCiudad);
+
+create index idProvincia
+    on Locacion (idProvincia);
+
+create table accesoVivienda
+(
+    idAcVivienda int          not null,
+    descripcion  varchar(250) null,
+    primary key (idAcVivienda)
+);
+
+create table aguaRecibeVivienda
+(
+    idAguaRecVivienda int          not null,
+    descripcion       varchar(250) null,
+    primary key (idAguaRecVivienda)
+);
+
+create table alumbrado
+(
+    idAlumbrado int          not null,
+    descripcion varchar(250) null,
+    primary key (idAlumbrado)
+);
+
+create table cAlimentosHogar
+(
+    idcAlimeHogar int         not null,
+    descripcion   varchar(50) null,
+    primary key (idcAlimeHogar)
+);
+
+create table cCombustible
+(
+    idCCombustible int          not null,
+    descripcion    varchar(250) null,
+    primary key (idCCombustible)
+);
+
+create table cEconomiaHogar
+(
+    idcEconHogar int         not null,
+    descripcion  varchar(50) null,
+    primary key (idcEconHogar)
+);
+
+create table cElectrodomHogar
+(
+    idcElecHogar int         not null,
+    descripcion  varchar(50) null,
+    primary key (idcElecHogar)
+);
+
+create table cEstadoCivil
+(
+    idcEstadoCivil int          not null,
+    descripcion    varchar(200) null,
+    primary key (idcEstadoCivil)
+);
+
+create table cEstructura
+(
+    idCEstructura int          not null,
+    descripcion   varchar(250) null,
+    primary key (idCEstructura)
+);
+
+create table cNivelInstruccion
+(
+    idcNivelInst int          not null,
+    descripcion  varchar(250) null,
+    primary key (idcNivelInst)
+);
+
+create table cSexo
+(
+    idcSexo     int          not null,
+    descripcion varchar(100) null,
+    primary key (idcSexo)
+);
+
+create table cVehiculo
+(
+    idCVehiculo int          not null,
+    descripcion varchar(250) null,
+    primary key (idCVehiculo)
+);
+
+create table cVestimentaHogar
+(
+    idcVestHogar int         not null,
+    descripcion  varchar(50) null,
+    primary key (idcVestHogar)
+);
+
+create table eliminarBasura
+(
+    idElBasura  int          not null,
+    descripcion varchar(250) null,
+    primary key (idElBasura)
+);
+
+create table estadoEstructura
+(
+    idEsEstructura int          not null,
+    descripcion    varchar(250) null,
+    primary key (idEsEstructura)
+);
+
+create table instalacionSanitaria
+(
+    idInSanitaria int          not null,
+    descripcion   varchar(250) null,
+    primary key (idInSanitaria)
+);
+
+create table materialCocinar
+(
+    idMaCocinar int          not null,
+    descripcion varchar(250) null,
+    primary key (idMaCocinar)
+);
+
+create table materialEstructura
+(
+    idMaEstructura int          not null,
+    descripcion    varchar(250) null,
+    primary key (idMaEstructura)
+);
+
+create table noTieneServicio
+(
+    idNoTieServicio int          not null,
+    descripcion     varchar(250) null,
+    primary key (idNoTieServicio)
+);
+
+create table obtencionAgua
+(
+    idObAgua    int          not null,
+    descripcion varchar(250) null,
+    primary key (idObAgua)
+);
+
+create table servicioDucha
+(
+    idSerDucha  int          not null,
+    descripcion varchar(250) null,
+    primary key (idSerDucha)
+);
+
+create table servicioHigienico
+(
+    idSeHigienico int          not null,
+    descripcion   varchar(250) null,
+    primary key (idSeHigienico)
+);
+
+create table tenenciaVivienda
+(
+    idTenVivienda int          not null,
+    descripcion   varchar(250) null,
+    primary key (idTenVivienda)
+);
+
+create table tipoVivienda
+(
+    idTiVivienda int          not null,
+    descripcion  varchar(250) null,
+    primary key (idTiVivienda)
+);
+
+create table Vivienda
+(
+    idVivienda        varchar(250) not null,
+    idAcVivienda      int          null,
+    idAlumbrado       int          null,
+    idAguaRecVivienda int          null,
+    idTiVivienda      int          null,
+    primary key (idVivienda),
+    constraint vivienda_ibfk_1
+        foreign key (idAcVivienda) references accesoVivienda (idAcVivienda),
+    constraint vivienda_ibfk_2
+        foreign key (idAlumbrado) references alumbrado (idAlumbrado),
+    constraint vivienda_ibfk_3
+        foreign key (idAguaRecVivienda) references aguaRecibeVivienda (idAguaRecVivienda),
+    constraint vivienda_ibfk_4
+        foreign key (idTiVivienda) references tipoVivienda (idTiVivienda)
+);
+
+create table Hogar
+(
+    idHogar              varchar(250) not null,
+    idSerDucha           int          null,
+    idTenVivienda        int          null,
+    idElBasura           int          null,
+    idObAgua             int          null,
+    idInSanitaria        int          null,
+    idSeHigienico        int          null,
+    idMaCocinar          int          null,
+    idNoTieServicio      int          null,
+    idVivienda           varchar(250) null,
+    idMaterialTecho      int          null,
+    idMaterialPared      int          null,
+    idMaterialPiso       int          null,
+    numeroDormitorios    int          null,
+    cuartoCocina         int          null,
+    numeroCuartos        int          null,
+    numeroCuartosNegocio int          null,
+    tieneMedidor         int          null,
+    valorMensualArriendo int          null,
+    parentescoPropVivi   int          null,
+    pagoArriendoConLuz   int          null,
+    pagoArriendoConAgua  int          null,
+    juntaAgua            int          null,
+    primary key (idHogar),
+    constraint hogar_ibfk_1
+        foreign key (idVivienda) references Vivienda (idVivienda),
+    constraint hogar_ibfk_10
+        foreign key (idMaterialTecho) references MaterialTecho (idMaterialTecho),
+    constraint hogar_ibfk_11
+        foreign key (idMaterialPiso) references MaterialPiso (idMaterialPiso),
+    constraint hogar_ibfk_12
+        foreign key (idMaterialPared) references MaterialPared (idMaterialPared),
+    constraint hogar_ibfk_2
+        foreign key (idTenVivienda) references tenenciaVivienda (idTenVivienda),
+    constraint hogar_ibfk_3
+        foreign key (idSerDucha) references servicioDucha (idSerDucha),
+    constraint hogar_ibfk_4
+        foreign key (idElBasura) references eliminarBasura (idElBasura),
+    constraint hogar_ibfk_5
+        foreign key (idObAgua) references obtencionAgua (idObAgua),
+    constraint hogar_ibfk_6
+        foreign key (idInSanitaria) references instalacionSanitaria (idInSanitaria),
+    constraint hogar_ibfk_7
+        foreign key (idSeHigienico) references servicioHigienico (idSeHigienico),
+    constraint hogar_ibfk_8
+        foreign key (idMaCocinar) references materialCocinar (idMaCocinar),
+    constraint hogar_ibfk_9
+        foreign key (idNoTieServicio) references noTieneServicio (idNoTieServicio)
+);
+
+create table Combustible
+(
+    idCombustible    int auto_increment
+        primary key,
+    gastoCombustible int          null,
+    idHogar          varchar(250) null,
+    idCCombustible   int          null,
+    constraint combustible_ibfk_1
+        foreign key (idCCombustible) references cCombustible (idCCombustible),
+    constraint combustible_ibfk_2
+        foreign key (idHogar) references Hogar (idHogar)
+);
+
+create index idCCombustible
+    on Combustible (idCCombustible);
+
+create index idHogar
+    on Combustible (idHogar);
+
+create table Encuesta
+(
+    idEncuesta int auto_increment
+        primary key,
+    idVivienda varchar(250) null,
+    idHogar    varchar(250) null,
+    idLocacion int          null,
+    idEstratos int          null,
+    Periodo    varchar(250) null,
+    UPMuestre  varchar(250) null,
+    Mes        int          null,
+    constraint encuesta_ibfk_1
+        foreign key (idVivienda) references Vivienda (idVivienda),
+    constraint encuesta_ibfk_2
+        foreign key (idHogar) references Hogar (idHogar),
+    constraint encuesta_ibfk_3
+        foreign key (idLocacion) references Locacion (idLocacion),
+    constraint encuesta_ibfk_4
+        foreign key (idEstratos) references Estratos (idEstratos)
+);
+
+create index idEstratos
+    on Encuesta (idEstratos);
+
+create index idHogar
+    on Encuesta (idHogar);
+
+create index idLocacion
+    on Encuesta (idLocacion);
+
+create index idVivienda
+    on Encuesta (idVivienda);
+
+create table Estructura
+(
+    idEstructura   int auto_increment
+        primary key,
+    idCEstructura  int          null,
+    idEsEstructura int          null,
+    idHogar        varchar(250) null,
+    constraint estructura_ibfk_1
+        foreign key (idCEstructura) references cEstructura (idCEstructura),
+    constraint estructura_ibfk_2
+        foreign key (idEsEstructura) references estadoEstructura (idEsEstructura),
+    constraint estructura_ibfk_3
+        foreign key (idHogar) references Hogar (idHogar)
+);
+
+create index idCEstructura
+    on Estructura (idCEstructura);
+
+create index idEsEstructura
+    on Estructura (idEsEstructura);
+
+create index idHogar
+    on Estructura (idHogar);
+
+create index idElBasura
+    on Hogar (idElBasura);
+
+create index idInSanitaria
+    on Hogar (idInSanitaria);
+
+create index idMaCocinar
+    on Hogar (idMaCocinar);
+
+create index idMaterialPared
+    on Hogar (idMaterialPared);
+
+create index idMaterialPiso
+    on Hogar (idMaterialPiso);
+
+create index idMaterialTecho
+    on Hogar (idMaterialTecho);
+
+create index idNoTieServicio
+    on Hogar (idNoTieServicio);
+
+create index idObAgua
+    on Hogar (idObAgua);
+
+create index idSeHigienico
+    on Hogar (idSeHigienico);
+
+create index idSerDucha
+    on Hogar (idSerDucha);
+
+create index idTenVivienda
+    on Hogar (idTenVivienda);
+
+create index idVivienda
+    on Hogar (idVivienda);
+
+create table Persona
+(
+    idPersona                      int auto_increment
+        primary key,
+    edad                           int          not null,
+    cSexo_idcSexo                  int          not null,
+    cEstadoCivil_idcEstadoCivil    int          not null,
+    cNivelInstruccion_idcNivelInst int          not null,
+    Hogar_idHogar                  varchar(100) not null,
+    constraint fk_Persona_Hogar1
+        foreign key (Hogar_idHogar) references Hogar (idHogar),
+    constraint fk_Persona_cEstadoCivil1
+        foreign key (cEstadoCivil_idcEstadoCivil) references cEstadoCivil (idcEstadoCivil),
+    constraint fk_Persona_cNivelInstruccion1
+        foreign key (cNivelInstruccion_idcNivelInst) references cNivelInstruccion (idcNivelInst),
+    constraint fk_Persona_cSexo1
+        foreign key (cSexo_idcSexo) references cSexo (idcSexo)
+);
+
+create index fk_Persona_Hogar1_idx
+    on Persona (Hogar_idHogar);
+
+create index fk_Persona_cEstadoCivil1_idx
+    on Persona (cEstadoCivil_idcEstadoCivil);
+
+create index fk_Persona_cNivelInstruccion1_idx
+    on Persona (cNivelInstruccion_idcNivelInst);
+
+create index fk_Persona_cSexo1_idx
+    on Persona (cSexo_idcSexo);
+
+create table Vehiculos
+(
+    idVehiculos int auto_increment
+        primary key,
+    cantidad    int          null,
+    idHogar     varchar(250) null,
+    idCVehiculo int          null,
+    constraint vehiculos_ibfk_1
+        foreign key (idCVehiculo) references cVehiculo (idCVehiculo),
+    constraint vehiculos_ibfk_2
+        foreign key (idHogar) references Hogar (idHogar)
+);
+
+create index idCVehiculo
+    on Vehiculos (idCVehiculo);
+
+create index idHogar
+    on Vehiculos (idHogar);
+
+create index idAcVivienda
+    on Vivienda (idAcVivienda);
+
+create index idAguaRecVivienda
+    on Vivienda (idAguaRecVivienda);
+
+create index idAlumbrado
+    on Vivienda (idAlumbrado);
+
+create index idTiVivienda
+    on Vivienda (idTiVivienda);
+
